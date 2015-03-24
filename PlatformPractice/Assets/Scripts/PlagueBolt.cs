@@ -5,7 +5,7 @@ public class PlagueBolt : MonoBehaviour {
 
 
     public GameObject BoltPrefab;
-    
+    public float BoltSpeed = 500f;
 
     // Use this for initialization
     void Start()
@@ -16,15 +16,24 @@ public class PlagueBolt : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        // Can't get Projectile to actually move. Receiving the error in-game: "Cannot cast from source type to destination type" when I fire projectiles, which instead are instnatiated at the character's location and just sit there.
 
         if (Input.GetButtonDown("Bolt"))
         {
-            Rigidbody clone;
-            clone = Instantiate(BoltPrefab, transform.position, transform.rotation) as Rigidbody;
-            clone.velocity = transform.TransformDirection(Vector3.forward * 10);
-            
+            Rigidbody2D clone;
+            clone = (Rigidbody2D)Instantiate(BoltPrefab, transform.position, transform.rotation) as Rigidbody2D;
+
+            clone.rigidbody2D.AddForce(clone.transform.forward.normalized * BoltSpeed); /*
+
+           /* clone.rigidbody2D.AddForce(Vector3.forward * 10); /*
+           
             /* AddForce */
 
         }
+    }
+    void FixedUpdate()
+    {
+       
+            
     }
 }

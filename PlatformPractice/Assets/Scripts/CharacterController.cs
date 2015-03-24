@@ -50,7 +50,7 @@ public class CharacterController : MonoBehaviour
         else if (move < 0 && facingRight)
             Flip();
 
-
+        //Sets the attack input and "IsAttacking" bool
         if (Input.GetButtonDown("Attack"))
             anim.SetBool("IsAttacking", true);
            
