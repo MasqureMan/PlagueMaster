@@ -197,8 +197,8 @@ GameObject:
   - 58: {fileID: 477985847}
   - 61: {fileID: 477985846}
   - 95: {fileID: 477985845}
-  - 114: {fileID: 477985844}
   - 114: {fileID: 477985851}
+  - 114: {fileID: 477985852}
   m_Layer: 8
   m_Name: Character
   m_TagString: Untagged
@@ -206,24 +206,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &477985844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: a13f5c66b9016744484cdbf6389f0895,
-    type: 2}
-  m_PrefabInternal: {fileID: 1561641984}
-  m_GameObject: {fileID: 477985843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe5dfb17818ac904c91a07b72bf56ed2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 10
-  groundCheck: {fileID: 1485458227}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 4294967039
-  jumpForce: 700
 --- !u!95 &477985845
 Animator:
   serializedVersion: 3
@@ -332,6 +314,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoltPrefab: {fileID: 100000, guid: 72ca56006ac874c4596d66f8f75accc6, type: 2}
   BoltSpeed: 500
+  PlagueEnergy: 10
+--- !u!114 &477985852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: a13f5c66b9016744484cdbf6389f0895,
+    type: 2}
+  m_PrefabInternal: {fileID: 1561641984}
+  m_GameObject: {fileID: 477985843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 471735ab6eeaf044dab3e89c13833c42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 10
+  groundCheck: {fileID: 1485458227}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 55
+  jumpForce: 700
+  cooldown: 2
+  AttackFinished: 0
 --- !u!1 &1285325836
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,7 +656,20 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 0}
+      propertyPath: cooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: a13f5c66b9016744484cdbf6389f0895, type: 2}
+      propertyPath: AttackFinished
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: a13f5c66b9016744484cdbf6389f0895, type: 2}
+      propertyPath: cooldown
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: a13f5c66b9016744484cdbf6389f0895, type: 2}
   m_RootGameObject: {fileID: 477985843}
   m_IsPrefabParent: 0

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CharacterControl : MonoBehaviour
+public class CharacterController : MonoBehaviour
 {
    
     public float maxSpeed = 10f;
@@ -33,15 +33,11 @@ public class CharacterControl : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-       
     }
-
-
 
     // Update is called once per frame
     void FixedUpdate()
     {
-       
 
         // Physics to check if the player is on the ground (Where is the circle, where it's generated, all it will collide with)
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
@@ -66,7 +62,16 @@ public class CharacterControl : MonoBehaviour
             Flip();
 
         //Sets the attack input and "IsAttacking" bool
-        
+        if (Input.GetButtonDown("Attack") && AttackFinished == false)
+        {
+            
+            anim.SetBool("IsAttacking", true);
+            AttackFinished = true;
+            AttackTimer();
+            
+            
+
+        }
 
        /* anim.SetBool("IsAttacking", */
 
@@ -75,18 +80,16 @@ public class CharacterControl : MonoBehaviour
 
     void AttackTimer()
     {
-        Debug.Log("Cooldown started! It is " + Time.time);
+        Debug.Log("Cooldown started!");
         
-       
+        cooldownDone = Time.time + cooldown;
         /*
         Time.time > cooldownDone
         */
-        if (cooldownDone < Time.time)
+        if (cooldownDone <= Time.time)
         {
-            
             AttackFinished = false;
             anim.SetBool("IsAttacking", false);
-            cooldownDone = Time.time + cooldown;
             Debug.Log("Cooldown Done!");
         }
     }
@@ -102,16 +105,6 @@ public class CharacterControl : MonoBehaviour
 
         }
 
-        if (Input.GetButtonDown("Attack") && AttackFinished == false)
-        {
-
-            anim.SetBool("IsAttacking", true);
-            AttackFinished = true;
-            AttackTimer();
-
-
-
-        }
 
     }
 
