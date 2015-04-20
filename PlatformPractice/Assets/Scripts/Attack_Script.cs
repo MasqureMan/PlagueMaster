@@ -30,6 +30,11 @@ public class Attack_Script : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+
+        if (other.gameObject.CompareTag("Turret"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
 

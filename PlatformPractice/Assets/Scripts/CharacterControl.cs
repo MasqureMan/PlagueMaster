@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CharacterController : MonoBehaviour
+public class CharacterControl : MonoBehaviour
 {
+	AudioSource audioSource;
+	AudioClip audioClip;
    
     public float maxSpeed = 10f;
-    bool facingRight = true;
+    public bool facingRight = true;
 
     Animator anim;
 
@@ -32,6 +34,9 @@ public class CharacterController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		audioSource = this.gameObject.AddComponent<AudioSource>();
+		audioSource.clip = audioClip;
+
         anim = GetComponent<Animator>();
     }
 
@@ -103,8 +108,12 @@ public class CharacterController : MonoBehaviour
             anim.SetBool("Ground", false);
             rigidbody2D.AddForce(new Vector2(0, jumpForce));
 
+			audioSource.PlayOneShot(audioClip);
+
         }
 
+
+        
 
     }
 
