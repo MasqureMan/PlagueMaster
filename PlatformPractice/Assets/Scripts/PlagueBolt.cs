@@ -15,6 +15,9 @@ public class PlagueBolt : MonoBehaviour {
 
 	private CharacterControl characterControl;
 
+    AudioSource audioSource;
+    public AudioClip audioClip;
+
     
 
 
@@ -31,7 +34,8 @@ public class PlagueBolt : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-
+        audioSource = this.gameObject.AddComponent<AudioSource>();
+        audioSource.clip = audioClip;
     }
 
   
@@ -46,11 +50,11 @@ public class PlagueBolt : MonoBehaviour {
         if (Input.GetButtonDown("Bolt") && PlagueEnergy > 0)
         {
             PlagueEnergy--;
-
+            audioSource.PlayOneShot(audioClip);
 			
             Rigidbody2D clone;
             clone = (Rigidbody2D)Instantiate(BoltPrefab, transform.position + transform.forward, transform.rotation) as Rigidbody2D;
-            Destroy(clone, 5);
+            Destroy(clone, 2);
 
 		/*
             if (Input.GetButtonDown("Bolt") && PlagueEnergy > 0 && characterControl.facingRight)

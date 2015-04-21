@@ -5,11 +5,22 @@ public class EnemyHP : MonoBehaviour {
 
     // Enemy's health
     public int EnemyHealth = 1;
-    
+
+    AudioSource audioSourceHit;
+
+    public AudioClip hitClip;
+
+
+    void Awake()
+    {
+        Destroy(gameObject, 2);
+    }
 
 	// Use this for initialization
 	void Start () {
-	
+
+        audioSourceHit = this.gameObject.AddComponent<AudioSource>();
+        audioSourceHit.clip = hitClip;
 	}
 	
 	// Update is called once per frame
@@ -35,6 +46,7 @@ public class EnemyHP : MonoBehaviour {
         {
             
             EnemyHealth--;
+            audioSourceHit.PlayOneShot(hitClip);
             EnemyDeathCheck();
              
         }
@@ -44,6 +56,7 @@ public class EnemyHP : MonoBehaviour {
         {
            
             EnemyHealth--;
+            audioSourceHit.PlayOneShot(hitClip);
             EnemyDeathCheck();
         }
 

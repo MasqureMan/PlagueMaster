@@ -4,7 +4,7 @@ using System.Collections;
 public class CharacterControl : MonoBehaviour
 {
 	AudioSource audioSource;
-	AudioClip audioClip;
+	public AudioClip jumpClip;
    
     public float maxSpeed = 10f;
     public bool facingRight = true;
@@ -35,7 +35,7 @@ public class CharacterControl : MonoBehaviour
     void Start()
     {
 		audioSource = this.gameObject.AddComponent<AudioSource>();
-		audioSource.clip = audioClip;
+		audioSource.clip = jumpClip;
 
         anim = GetComponent<Animator>();
     }
@@ -108,7 +108,7 @@ public class CharacterControl : MonoBehaviour
             anim.SetBool("Ground", false);
             rigidbody2D.AddForce(new Vector2(0, jumpForce));
 
-			audioSource.PlayOneShot(audioClip);
+			audioSource.PlayOneShot(jumpClip);
 
         }
 

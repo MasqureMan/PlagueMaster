@@ -61,6 +61,7 @@ GameObject:
   - 95: {fileID: 9500000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400004}
   m_Layer: 8
   m_Name: Character 1
   m_TagString: Player
@@ -190,11 +191,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 100006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aa7f534438b6db44a6b6b07b91cf5c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 14f2ef07298e20d4dbc5559b686a9b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotPrefab: {fileID: 400000, guid: 367cc8d6574b454499fa7750e7313717, type: 2}
-  shootingRate: .25
+  Health: 5
+  deathClip: {fileID: 8300000, guid: 3b700196313f3ea418bcaad032f7b4a5, type: 3}
+  hurtClip: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,6 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471735ab6eeaf044dab3e89c13833c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpClip: {fileID: 8300000, guid: e771d3b69a8075149858566181c2c65a, type: 3}
   maxSpeed: 10
   facingRight: 1
   groundCheck: {fileID: 400004}
@@ -215,6 +218,21 @@ MonoBehaviour:
   jumpForce: 700
   cooldown: 1
   AttackFinished: 0
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e18442c6ff9b247af0da36bb972316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoltPrefab: {fileID: 100000, guid: 72ca56006ac874c4596d66f8f75accc6, type: 2}
+  BoltSpeed: 20
+  PlagueEnergy: 10
+  audioClip: {fileID: 8300000, guid: c065ebafa94858443a28461b4d776ae5, type: 3}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

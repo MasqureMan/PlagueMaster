@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPrefab: {fileID: 100000, guid: e86e9b6809aa66449a08a92e6257c4d8, type: 2}
+  audioClip: {fileID: 8300000, guid: d0ab06efa74fdfb479f480f7aa5e5ec1, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
