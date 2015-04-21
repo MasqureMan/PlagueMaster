@@ -15,6 +15,7 @@ public class PlagueBolt : MonoBehaviour {
 
 	private CharacterControl characterControl;
 
+    //References to the audio source and clip
     AudioSource audioSource;
     public AudioClip audioClip;
 
@@ -34,7 +35,9 @@ public class PlagueBolt : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        //Sets the reference to the audio source to target a new audio source that is made when the scene starts.
         audioSource = this.gameObject.AddComponent<AudioSource>();
+        //Sets the reference to the audio clip to target the audio source's current audio clip
         audioSource.clip = audioClip;
     }
 
@@ -45,7 +48,7 @@ public class PlagueBolt : MonoBehaviour {
     {
         // Projectile moves in one direction, currently positive on the horizontal axis (Right). Receiving the error in-game: "Cannot cast from source type to destination type" when I fire projectiles, but they still fire. Would prefer for projectile to fire the direction the player is facing, but currently gameplay will be based on progressing to the right of the screen like in Mario.
 
-        // When the Bolt button is pressed and PlagueEnergy is above 0, a projectile bolt is fired and the PlagueEnergy variable is reduced by 1. The bolt is destroyed in 5 seconds.
+        // When the Bolt button is pressed and PlagueEnergy is above 0, a projectile bolt is fired,the PlagueEnergy variable is reduced by 1, and the audio clip plays. The bolt is destroyed in 5 seconds. 
 
         if (Input.GetButtonDown("Bolt") && PlagueEnergy > 0)
         {

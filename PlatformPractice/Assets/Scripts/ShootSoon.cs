@@ -5,6 +5,7 @@ public class ShootSoon : MonoBehaviour {
 
     public GameObject shootPrefab;
 
+    //References to the audio source and clip
     AudioSource audioSource;
     public AudioClip audioClip;
 
@@ -12,7 +13,10 @@ public class ShootSoon : MonoBehaviour {
 
     //Calls the turret shooting function
 	void Start () {
+        //Sets the reference to the audio source to target a new audio source that is made when the scene starts.
         audioSource = this.gameObject.AddComponent<AudioSource>();
+
+        //Sets the reference to the audio clip to target the audio source's current audio clip
         audioSource.clip = audioClip;
         
 
@@ -25,7 +29,7 @@ public class ShootSoon : MonoBehaviour {
         
 	}
 
-    //Turret shoots the projectile
+    //Turret shoots the projectile and plays the audio clip
     void Shoot()
     {
         Rigidbody2D clone;

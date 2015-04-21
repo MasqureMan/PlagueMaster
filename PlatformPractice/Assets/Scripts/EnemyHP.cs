@@ -6,8 +6,8 @@ public class EnemyHP : MonoBehaviour {
     // Enemy's health
     public int EnemyHealth = 1;
 
+    //References to the audio source and clip
     AudioSource audioSourceHit;
-
     public AudioClip hitClip;
 
 
@@ -19,7 +19,10 @@ public class EnemyHP : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        //Sets the reference to the audio source to target a new audio source that is made when the scene starts.
         audioSourceHit = this.gameObject.AddComponent<AudioSource>();
+
+        //Sets the reference to the audio clip to target the audio source's current audio clip
         audioSourceHit.clip = hitClip;
 	}
 	
@@ -44,7 +47,7 @@ public class EnemyHP : MonoBehaviour {
         //If a Bolt projectile hits an enemy, the enemy loses health and checks for death
         if (other.gameObject.CompareTag("Bolt"))
         {
-            
+            //Audio clip plays when the enemy projectile hits a player projectile
             EnemyHealth--;
             audioSourceHit.PlayOneShot(hitClip);
             EnemyDeathCheck();
@@ -54,7 +57,7 @@ public class EnemyHP : MonoBehaviour {
         //If a Player collides with an enemy, the enemy loses health and checks for death
         if (other.gameObject.CompareTag("Player"))
         {
-           
+           //Audio clip plays when the enemy projectile hits the player
             EnemyHealth--;
             audioSourceHit.PlayOneShot(hitClip);
             EnemyDeathCheck();

@@ -6,14 +6,17 @@ public class BoltHP : MonoBehaviour {
     // Enemy's health
     public int BoltHealth = 1;
 
+    //References to the audio source and clip
     AudioSource audioSourceHit;
-
     public AudioClip hitClip;
 
     // Use this for initialization
     void Start()
     {
+        //Sets the reference to the audio source to target a new audio source that is made when the scene starts.
         audioSourceHit = this.gameObject.AddComponent<AudioSource>();
+
+        //Sets the reference to the audio clip to target the audio source's current audio clip
         audioSourceHit.clip = hitClip;
     }
 
