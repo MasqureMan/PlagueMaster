@@ -1,15 +1,19 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class BoltHP : MonoBehaviour {
 
-    // Enemy's health
-    public int BoltHealth = 1;
+  
 
     //References to the audio source and clip
     AudioSource audioSourceHit;
     public AudioClip hitClip;
 
+	//Destroys the bolt after 1.5 seconds
+	void Awake ()
+	{
+		Destroy (gameObject, 1.5f);
+	}
     // Use this for initialization
     void Start()
     {
@@ -26,37 +30,38 @@ public class BoltHP : MonoBehaviour {
 
     }
 
-    //Checks the EnemyHealth to see if the enemy is destroyed
-    void EnemyDeathCheck()
-    {
-        if (BoltHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
+	//Destroys the player's projectile
+	void DestroyBolt()
+	{
+		Destroy(gameObject);
+	}
+
+
+
+ 
 
     // Enemy gameobject is destroyed before player's health can be affected, want to find out why. 
 
-    void OnTriggerEnter2D (Collider2D other)
+	void OnCollisionEnter2D(Collision2D hit)
     {
-        //If a Bolt projectile hits an enemy, the enemy loses health and checks for death
-        if (other.gameObject.CompareTag("Enemy"))
+        //If a Bolt projectile hits an enemy, the enemy loses health and checks for death.
+		if (hit.gameObject.tag =="Enemy")
         {
             //Sound doesn't work because game object is destroyed too quick
-            audioSourceHit.PlayOneShot(hitClip);
-            Destroy(gameObject);
-            EnemyDeathCheck();
+
+			audioSourceHit.PlayOneShot(hitClip);
+           
             
         }
 
-        //If a Player collides with an enemy, the enemy loses health and checks for death
-        if (other.gameObject.CompareTag("Turret"))
+        //If a Player collides with a Turret, the enemy loses health and checks for death. DestroyBolt is invoked after .01 seconds so the audio clip can go off first.
+		if (hit.gameObject.tag =="Turret")
         {
             //Sound doesn't work because game object is destroyed too quick
             audioSourceHit.PlayOneShot(hitClip);
-            Destroy(gameObject);
-            
-            EnemyDeathCheck();
+			Invoke ("DestroyBolt", .01f);
+			
+          
         }
 
     }

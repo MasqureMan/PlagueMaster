@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ShootSoon : MonoBehaviour {
 
+	//The bullet prefab we will be instantiating
     public GameObject shootPrefab;
 
     //References to the audio source and clip
@@ -19,7 +20,7 @@ public class ShootSoon : MonoBehaviour {
         //Sets the reference to the audio clip to target the audio source's current audio clip
         audioSource.clip = audioClip;
         
-
+		//Starts shooting from the start, which will first happen 3 seconds after the game has started. 
         TurretShoot();
 
 	}
@@ -32,9 +33,9 @@ public class ShootSoon : MonoBehaviour {
     //Turret shoots the projectile and plays the audio clip
     void Shoot()
     {
-        Rigidbody2D clone;
+        GameObject clone;
         audioSource.PlayOneShot(audioClip);
-        clone = (Rigidbody2D)Instantiate(shootPrefab, transform.position + transform.forward, transform.rotation) as Rigidbody2D;
+		clone = (GameObject)Instantiate(shootPrefab, transform.position + transform.forward, transform.rotation);
     }
 
     //The turret shoots every 3 seconds

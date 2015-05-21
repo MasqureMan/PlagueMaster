@@ -13,7 +13,7 @@ GameObject:
   - 50: {fileID: 5000000}
   - 61: {fileID: 6100000}
   - 114: {fileID: 11400002}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy_Projectile
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247647c67e759cc479c644c40060f532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsDead: 0
   speed: {x: 10, y: 10}
   direction: {x: -1, y: 0}
 --- !u!114 &11400002
@@ -84,6 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyHealth: 1
   hitClip: {fileID: 8300000, guid: 3b700196313f3ea418bcaad032f7b4a5, type: 3}
+  moveScript: {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -96,7 +98,7 @@ SpriteRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: e41499a95b9a0914ca8ea53f46767ce6, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0

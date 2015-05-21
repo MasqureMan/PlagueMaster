@@ -3,12 +3,16 @@ using System.Collections;
 
 public class CharacterControl : MonoBehaviour
 {
+	//Audio sources and the jumpClip
 	AudioSource audioSource;
 	public AudioClip jumpClip;
-   
+	
+	
+	//Movement variables
     public float maxSpeed = 10f;
     public bool facingRight = true;
 
+	//Initializing the animator
     Animator anim;
 
     // Checks if the player is on the ground or not, used for jumping and animations
@@ -16,27 +20,23 @@ public class CharacterControl : MonoBehaviour
     public Transform groundCheck;
     float groundRadius = 0.2f;
     public LayerMask whatIsGround;
-
     public float jumpForce = 700f; 
 
 
-    //Attack Cooldowns
-   //cooldown used to set amount of time before new attacks are allowed
-   public float cooldown = 1.0f;
-
-  
+  //Attack finished being false allows the player to attack, and prevents it when true. 
    public bool AttackFinished = false;
-   private float cooldownDone;
-    
+   
 
     
 
     // Use this for initialization
     void Start()
     {
+		//Adds an audio source to the player which houses the jumpClip. 
 		audioSource = this.gameObject.AddComponent<AudioSource>();
 		audioSource.clip = jumpClip;
 
+		//Initializes the player's animator, mainly to get to the IsAttacking bool
         anim = GetComponent<Animator>();
     }
 
@@ -66,43 +66,37 @@ public class CharacterControl : MonoBehaviour
         else if (move < 0 && facingRight)
             Flip();
 
-        //Sets the attack input and "IsAttacking" bool
+        //Sets the attack input and "IsAttacking" bool (which triggers the attack animation when true) if the player has not recently attacked (AttackFinished is false). This serves as a short cooldown period to prevent spamming. 
+		//After 1 second through the AttackTimer Invoke, both the IsAttacking bool and AttackFinished are returned to their false states so the player can attack again.
         if (Input.GetButtonDown("Attack") && AttackFinished == false)
         {
             
             anim.SetBool("IsAttacking", true);
             AttackFinished = true;
-            AttackTimer();
+			Invoke ("AttackTimer", 1);
             
             
 
         }
 
-       /* anim.SetBool("IsAttacking", */
-
-        /* idle animation unity */
+    
+		
     }
 
+	
     void AttackTimer()
     {
-        Debug.Log("Cooldown started!");
-        
-        cooldownDone = Time.time + cooldown;
-        /*
-        Time.time > cooldownDone
-        */
-        if (cooldownDone <= Time.time)
-        {
-            AttackFinished = false;
-            anim.SetBool("IsAttacking", false);
-            Debug.Log("Cooldown Done!");
-        }
+		
+		anim.SetBool ("IsAttacking", false);
+		AttackFinished = false;
+	
+	
     }
 
     void Update()
     {
-        
-        // Player will jump if grounded and pressing space.
+       
+        // Player will jump if grounded and pressing space, which also plays the jumpClip.
         if (grounded && Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetBool("Ground", false);
@@ -111,13 +105,78 @@ public class CharacterControl : MonoBehaviour
 			audioSource.PlayOneShot(jumpClip);
 
         }
-
+		}
+		
+		    //if (anim.GetBool("Grounded")) {
+                        //Moving platform logic
+                        //Check what platform we are on
+						/*
+                        List<Transform> platforms = new List<Transform> ();
+                        bool onSamePlatform = false;
+                        foreach (Transform groundCheck in groundChecks) {
+                                RaycastHit2D hit = Physics2D.Linecast (transform.position, groundCheck.position, 1 << LayerMask.NameToLayer ("Ground"));
+                                if (hit.transform != null) {
+                                        platforms.Add (hit.transform);
+                                        if (currentPlatform == hit.transform) {
+                                                onSamePlatform = true;
+                                        }
+                                }
+                        }
+               
+ 
+                        if (!onSamePlatform) {
+                                foreach (Transform platform in platforms) {
+                                        currentPlatform = platform;
+                                        lastPlatformPosition = currentPlatform.position;
+                                }
+                        }
+ 
+                        if (currentPlatform != null) {
+                                //Determine how far platform has moved
+                                currentPlatformDelta = currentPlatform.position - lastPlatformPosition;
+ 
+                                lastPlatformPosition = currentPlatform.position;
+                        }
+                //}
+    }
+ 
+    void LateUpdate()
+    {
+        if (anim.GetBool ("Grounded")) {
+                        if (currentPlatform != null) {
+                                //Move with the platform
+                                transform.position += currentPlatformDelta;
+                        }
+                }
+    }
+		
 
         
 
-    }
-
-
+    
+	/*
+	 void OnTriggerStay2D(Collider2D other){
+             
+             if(other.gameObject.tag == "Platform"){
+			 
+		
+             player.transform.parent = other.transform;
+			 Debug.Log("Platform parent");
+			 
+			 //Vector2 Ox = other.rigidbody2D.velocity;
+			 //Ox.x = this.rigidbody2D.velocity.x;
+ 
+         }
+     }
+ 
+	void OnTriggerExit2D(Collider2D other){
+     if(other.gameObject.tag == "Platform"){
+             transform.parent = null;
+             
+         }
+     }    
+*/
+    //Turns the player around
     void Flip()
     {
 
@@ -126,4 +185,11 @@ public class CharacterControl : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
+	
+	
+    
+
+ 
+ 
+	
 } //End of line

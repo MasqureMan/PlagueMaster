@@ -3,14 +3,15 @@ using System.Collections;
 
 public class EnemyHP : MonoBehaviour {
 
-    // Enemy's health
-    public int EnemyHealth = 1;
+
 
     //References to the audio source and clip
     AudioSource audioSourceHit;
     public AudioClip hitClip;
 
 
+
+ //Enemy projectile is destroyed after 2 seonds
     void Awake()
     {
         Destroy(gameObject, 2);
@@ -31,36 +32,43 @@ public class EnemyHP : MonoBehaviour {
 	
 	}
 
-    //Checks the EnemyHealth to see if the enemy is destroyed
-    void EnemyDeathCheck()
-    {
-        if (EnemyHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
+	
 
-    // Enemy gameobject is destroyed before player's health can be affected, want to find out why. 
+
+     
     
-    void OnTriggerEnter2D (Collider2D other)
+	IEnumerator OnCollisionEnter2D(Collision2D hit)
     {
-        //If a Bolt projectile hits an enemy, the enemy loses health and checks for death
-        if (other.gameObject.CompareTag("Bolt"))
+        //If a Bolt projectile hits an enemy projectile, they are both destroyed
+		if  (hit.gameObject.tag =="Bolt")
         {
+		
             //Audio clip plays when the enemy projectile hits a player projectile
-            EnemyHealth--;
-            audioSourceHit.PlayOneShot(hitClip);
-            EnemyDeathCheck();
+			//yield to make sure audio clip gets to play before projectile is destroyed
+			
+			audioSourceHit.PlayOneShot(hitClip);
+			
+			yield return new WaitForSeconds (.01f);    
+			
+			Destroy(gameObject);
+			Destroy(hit.gameObject);
+            
+
              
         }
 
-        //If a Player collides with an enemy, the enemy loses health and checks for death
-        if (other.gameObject.CompareTag("Player"))
+        //If a Player collides with an enemy projectile, it is destroyed and plays a clip
+		if (hit.gameObject.tag =="Player")
         {
            //Audio clip plays when the enemy projectile hits the player
-            EnemyHealth--;
+		
+		  
             audioSourceHit.PlayOneShot(hitClip);
-            EnemyDeathCheck();
+			
+          //Waits .01f, then destroys the enemy projectile
+		    yield return new WaitForSeconds (.01f); 
+			
+			Destroy(gameObject);
         }
 
     }
