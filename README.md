@@ -15,6 +15,7 @@ Move: ASD or Arrow Keys
 Attack: F
 Fire Plague Bolt: G
 Jump: Space Bar
+Pause: O 
 
 The goal of the game is to get to the end of each level and touch the object 
 there to get to the next. Each level is timed at just over a minute however, so speed 
@@ -28,5 +29,8 @@ and getting close to turrets is risky!
 I have pulled down and verified that the project is complete and runs as
 I designed it.
 
+The timer ambient sound is from http://freesound.org/people/zagi2/sounds/223475/. 
+
+The main menu background is from http://opengameart.org/content/background-night.
 
 
