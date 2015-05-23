@@ -4,7 +4,7 @@ using System.Collections;
 public class Timer : MonoBehaviour {
 
 	//Timer will be where we count down from, TimeLeft is the amount of time left on the timer. This is the actual time displayed to the player.
-    public float timer = 100;
+    public float timer = 70;
     public float TimeLeft;
 
 	//references the pause script

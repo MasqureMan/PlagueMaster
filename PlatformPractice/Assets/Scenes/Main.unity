@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myGUISkin: {fileID: 0}
-  Background: {fileID: 2800000, guid: 6e84bf32abf34f2489aec270f82565b2, type: 3}
-  Logo: {fileID: 2800000, guid: 01390ebc6f2fbc144a1819879d8c7b7d, type: 3}
+  Background: {fileID: 2800000, guid: 1ed79b8e9ad7e504abe22d0dc71442ba, type: 3}
+  Logo: {fileID: 0}
   CreditsTextLines:
   - P1
   - P2

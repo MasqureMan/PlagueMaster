@@ -5,7 +5,9 @@ public class PlagueBolt : MonoBehaviour {
 
    //The bolt prefab that will be instatiated and how fast it will move
     public GameObject BoltPrefab;
-    public float BoltSpeed = 20f;
+    public float BoltSpeed = 20f; 
+	
+
 
     //PlagueEnergy manages the amount of bolts that can be fired
     public int PlagueEnergy = 10;
@@ -38,6 +40,8 @@ public class PlagueBolt : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+	
+        
         //Sets the reference to the audio source to target a new audio source that is made when the scene starts.
         audioSource = this.gameObject.AddComponent<AudioSource>();
         //Sets the reference to the audio clip to target the audio source's current audio clip

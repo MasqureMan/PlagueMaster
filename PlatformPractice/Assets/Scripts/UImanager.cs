@@ -58,7 +58,7 @@ public class UImanager : MonoBehaviour {
 		//Opens the main menu if the menuState is main
 		if(menuState == main)
 		{
-			WindowRect = GUI.Window(0, WindowRect, menuFunc, "Main Menu");
+			WindowRect = GUI.Window(0, WindowRect, menuFunc, "Plague Master");
 		}
 		//Opens the options window is the menuState is options
 		if(menuState == options)

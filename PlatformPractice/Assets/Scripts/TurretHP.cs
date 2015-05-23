@@ -6,7 +6,7 @@ public class TurretHP : MonoBehaviour {
     // Enemy's health
     public int EnemyHealth = 2;
 
-	private PlagueBolt plagueScript;
+	
 	
 	
 
@@ -18,7 +18,7 @@ public class TurretHP : MonoBehaviour {
 	void Awake()
 	{
 
-	plagueScript = GetComponent<PlagueBolt>();
+	
 	}
 
     // Use this for initialization
@@ -31,8 +31,7 @@ public class TurretHP : MonoBehaviour {
 	 
 	
 	
-	 
-      //originalColor = renderer.material.color;
+	
     }
 	
 	
@@ -50,13 +49,7 @@ public class TurretHP : MonoBehaviour {
 	{
 	
 	spriteColor.color = Color.green;
-	/*
-	if (renderer.material.HasProperty("_TintColor"))
-renderer.material.SetColor("_TintColor", Color.green);
-	else {
-	 Debug.Log("No _Color property!");
-	 }
-	*/
+
 
 	
 	
@@ -79,7 +72,7 @@ renderer.material.SetColor("_TintColor", Color.green);
 
 	void OnCollisionEnter2D(Collision2D hit)
     {
-        //If a Bolt projectile hits an enemy, the enemy loses health and checks for death
+        //If a Bolt projectile hits an enemy, the enemy loses health, turns green, and checks for death
 		if (hit.gameObject.tag =="Bolt")
         {
             

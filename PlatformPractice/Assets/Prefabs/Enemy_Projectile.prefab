@@ -83,9 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0bae5a17e4cd648a55a240b05c647b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHealth: 1
   hitClip: {fileID: 8300000, guid: 3b700196313f3ea418bcaad032f7b4a5, type: 3}
-  moveScript: {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -106,7 +104,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300052, guid: 79750594972c20a42a3a61a38ccc485c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2939bfbf0e03ea64ca752425f48f143b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

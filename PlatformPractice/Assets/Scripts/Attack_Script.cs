@@ -22,12 +22,13 @@ public class Attack_Script : MonoBehaviour
     void Awake()
     {
 	//Initializing the animator for reference
-        anim = Character.GetComponent<Animator>();
+       
     }
 
     void Start()
     {
 	//Initializing the plague and hp scripts for reference
+	 anim = Character.GetComponent<Animator>();
         plagueScript = Character.GetComponent<PlagueBolt>();
         hpScript = Character.GetComponent<HpScript>();
       

@@ -21,7 +21,8 @@ public class CharacterControl : MonoBehaviour
     float groundRadius = 0.2f;
     public LayerMask whatIsGround;
     public float jumpForce = 700f; 
-
+	
+	public float Move;
 
   //Attack finished being false allows the player to attack, and prevents it when true. 
    public bool AttackFinished = false;
@@ -38,6 +39,8 @@ public class CharacterControl : MonoBehaviour
 
 		//Initializes the player's animator, mainly to get to the IsAttacking bool
         anim = GetComponent<Animator>();
+		
+		// Move = new float move;
     }
 
     // Update is called once per frame
@@ -54,7 +57,8 @@ public class CharacterControl : MonoBehaviour
 
 
         // Moves the character according to speed and their input
-        float move = Input.GetAxis("Horizontal");
+       // Move = new float move;
+		float move = Input.GetAxis("Horizontal");
 
         anim.SetFloat("Speed", Mathf.Abs(move));
 
