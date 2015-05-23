@@ -33,4 +33,6 @@ The timer ambient sound is from http://freesound.org/people/zagi2/sounds/223475/
 
 The main menu background is from http://opengameart.org/content/background-night.
 
+The normal ambient sound is from https://www.freesound.org/people/burning-mir/sounds/223446/.
+
 
