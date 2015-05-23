@@ -16,4 +16,8 @@
 ehthumbs.db
 Thumbs.db
 $RECYCLE.BIN/
+<<<<<<< HEAD
 Desktop.ini
+=======
+Desktop.ini
+>>>>>>> parent of a7758be... Another new git ignore
