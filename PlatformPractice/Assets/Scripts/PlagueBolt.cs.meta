@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 22e18442c6ff9b247af0da36bb972316
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - BoltPrefab: {fileID: 100000, guid: 72ca56006ac874c4596d66f8f75accc6, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
