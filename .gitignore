@@ -16,3 +16,6 @@ ehthumbs.db
 Thumbs.db
 $RECYCLE.BIN/
 Desktop.ini
+
+# include meta files
+!*.*.meta
